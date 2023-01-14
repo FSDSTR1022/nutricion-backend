@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const mongoUrl = 'mongodb+srv://nutricion:4bDwjEOHoGDexz4X@nutricion.cclxebv.mongodb.net/nutricionRojo?retryWrites=true&w=majority';
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,6 +11,15 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+//mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl) // (mongoUrl, {useNewUrlParser: true, useUnifieldTopology: true})
+    .then(x => {
+        console.log('Conexion bbdd correcto',x.connections[0].name);
+    })
+    .catch(err => {
+        console.log('Conexion bbdd error', err);
+    }); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,5 +49,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
