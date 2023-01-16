@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const exerciseRoutes = require('./exerciseRouter');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const patientRoutes = require('./patients')
+const professionalRoutes = require('./professionals')
+const disciplineRoutes = require('./disciplines')
 
-router.use("/Ejercicios",exerciseRoutes)
+router
+  .use("/patients", patientRoutes)
+  .use("/professionals", professionalRoutes)
+  .use("/disciplines", disciplineRoutes)
+  .use("/Ejercicios",exerciseRoutes)
 
-module.exports = router;
+module.exports = router
