@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const patientRoutes = require('./patients')
+const professionalRoutes = require('./professionals')
+const disciplineRoutes = require('./disciplines')
 
-module.exports = router;
+router
+  .use("/patients", patientRoutes)
+  .use("/professionals", professionalRoutes)
+  .use("/disciplines", disciplineRoutes)
+
+module.exports = router
