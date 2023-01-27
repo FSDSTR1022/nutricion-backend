@@ -37,18 +37,15 @@ router.put("/:_id", async function (req, res, next) {
   res.send("Modificación finalizada");
 });
 
-router.delete("/:_id", async function (req, res, next) {
-  await IngredientSchema.findByIdAndDelete(
-    req.params._id,
-    function (err, docs) {
-      if (err) {
-        console.log(err);
-        res.json({ err });
-      } else {
-        res.json({ deleted: docs });
-        console.log("Deleted : ", docs);
-      }
+router.delete("/:id", function (req, res, next) {
+  IngredientSchema.findByIdAndDelete(req.params.id, function (err, docs) {
+    if (err) {
+      console.log("error en delete", err);
+      res.json({ err });
+    } else {
+      res.json({ deleted: docs });
+      console.log("Deleted : ", docs);
     }
-  );
+  });
 });
 module.exports = router;
