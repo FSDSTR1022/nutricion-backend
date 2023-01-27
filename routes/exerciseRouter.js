@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const exerciseController = require ("../controllers/exerciseController");
 
-router.post("/",exerciseController.createExercise)
+
 router.get("/",exerciseController.getAllExercises);
+router.delete("/",exerciseController.deleteExcercise)
 router.put("/",exerciseController.updateExercise);
 
 router.get("/NuevoEjercicio",exerciseController.getExerciseAtributes);
+router.post("/NuevoEjercicio",exerciseController.createExercise)
+
 
 
 router.post("/TipoEjercicios",exerciseController.createExerciseType)

@@ -5,4 +5,5 @@ const ExerciseDifficultySchema = new Schema({
     exerciseDifficulty: String
 },{timestamps:true})
 
+
 module.exports = mongoose.model('exercisedifficulty',ExerciseDifficultySchema)

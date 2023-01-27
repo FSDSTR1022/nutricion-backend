@@ -5,4 +5,5 @@ const ExerciseTypeSchema = new Schema({
     exerciseType: String
 },{timestamps:true})
 
+
 module.exports = mongoose.model('exercisetypes',ExerciseTypeSchema)
