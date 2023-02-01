@@ -1,51 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const IngredientSchema = require("../models/ingredient");
+const userController = require('../controllers/ingredients')
 
-router.get("/", async function (req, res, next) {
-  const ingredients = await IngredientSchema.find();
-  res.json({ ingredients });
-});
 
-router.get("/:_id", async function (req, res, next) {
-  const ingredient = await IngredientSchema.findById(req.params._id);
-  res.json({ item: ingredient });
-});
+// GET INGREDIENTS
+router.get('/', userController.getAllIngredients)
 
-router.post("/", async function (req, res, next) {
-  const newIngredient = new IngredientSchema();
-  newIngredient.nameIngredient = req.body.nameIngredient;
-  newIngredient.grProtein = req.body.grProtein;
-  newIngredient.grFats = req.body.grFats;
-  newIngredient.grCarboHydrates = req.body.grCarboHydrates;
-  newIngredient.Kcal = req.body.Kcal;
+// GET INGREDIENT BY ID
 
-  newIngredient.save((err, saveInfo) => {
-    if (err) return res.status(500).json({ error: err });
-    return res.json({ ingredient: saveInfo });
-  });
-});
+router.get('/:id', userController.getIngredientById)
 
-router.put("/:_id", async function (req, res, next) {
-  console.log("entramos en put");
-  const ingredient = await IngredientSchema.findByIdAndUpdate(
-    req.params._id,
-    req.body
-  );
-  if (!ingredient) return res.status(404).json({});
+//  POST INGREDIENT
 
-  res.send("Modificación finalizada");
-});
+router.post('/', userController.createIngredient)
 
-router.delete("/:id", function (req, res, next) {
-  IngredientSchema.findByIdAndDelete(req.params.id, function (err, docs) {
-    if (err) {
-      console.log("error en delete", err);
-      res.json({ err });
-    } else {
-      res.json({ deleted: docs });
-      console.log("Deleted : ", docs);
-    }
-  });
-});
+// PUT INGREDIENT
+
+router.put('/:id', userController.putIngredient)
+
+// DELETE INGREDIENT
+
+router.delete('/:id', userController.deleteIngredient)
+
+
 module.exports = router;
