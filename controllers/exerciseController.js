@@ -29,15 +29,22 @@ const createExercise = async (req, res) => {
 };
 
 const updateExercise = async (req, res) => {
-  /* console.log("PARAMS: ",req.params);
+   console.log("PARAMS: ",req.params);
+                                       //{}
     console.log("BODY: ",req.body);
+                                      /* {
+                                        name: 'Ejercicio Modificado',
+                                        bodyPart: [ { _id: '63c5d88935c2960ff95f6854' } ]
+                                      } */    
+    console.log("Query: ",req.query);
+                                      //->  { id: '63d7d0f4f5dca7a34c4c8bf0' }
+    console.log("ID: ",req.query.id);
+                                      // -> 63d7d0f4f5dca7a34c4c8bf0
     
-    console.log("ID: ",req.query.id); */
-console.log("Query: ",req.query);
     try {
      let resuesta =await ExerciseModel.findByIdAndUpdate(req.query.id, req.body);
      
-     console.log(resuesta)
+     console.log("Respuesta BD: ",resuesta)
 
      const exercise = await ExerciseModel.findById(req.query.id);
 
