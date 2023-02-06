@@ -61,15 +61,16 @@ const updateExercise = async (req, res) => {
 
 const deleteExcercise = async (req,res) =>{
 
-  try {    
-    let respuesta = await ExerciseModel.findByIdAndDelete(req.query._id) 
+  try {
+      
+    let respuesta = await ExerciseModel.findByIdAndDelete(req.query._id)
+
     if(!respuesta)
     {
-      res.json('No hay Ejercicio con ese ID')
+            res.status(404).json('No hay Ejercicio con ese ID')
     }
     else{
-      console.log(respuesta)
-    res.json(respuesta)
+      res.json(respuesta)
     }    
    
   } catch (error) {
@@ -136,6 +137,7 @@ const createExerciseEquipment = async (req, res) => {
   res.json(exerciseEquipment);
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 const getAllExerciseEquipment = async (req, res) => {
   try {
     const result = await ExerciseEquipment.find(req.query);
