@@ -8,10 +8,10 @@ const ExerciseSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "exercisetypes",
     },
-    bodyPart: {
+    bodyParts: [{
       type: Schema.Types.ObjectId,
       ref: "exercisebodypart",
-    },
+    }],
     muscles: [{
       type: Schema.Types.ObjectId,
       ref: "exercisemuscles",
@@ -21,10 +21,10 @@ const ExerciseSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "exercisedifficulty",
       },
-    equipment: {
+    equipments: [{
       type: Schema.Types.ObjectId,
       ref: "exerciseequipment",
-    },
+    }],
     explanation: String,
     precautions: String,
     photo: String,
