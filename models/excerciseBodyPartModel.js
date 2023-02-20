@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
-const ExcerciseBodyPart = new Schema({
-    bodyPart: String
-},{timestamps:true})
+const ExcerciseBodyPart = new Schema(
+	{
+		bodyPart: String,
+	},
+	{ timestamps: true }
+);
 
-module.exports = mongoose.model('exercisebodypart',ExcerciseBodyPart)
+module.exports = mongoose.model('exercisebodypart', ExcerciseBodyPart);

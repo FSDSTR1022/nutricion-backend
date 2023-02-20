@@ -1,9 +1,9 @@
-const IngredientModel = require("../models/ingredient");
+const IngredientModel = require('../models/ingredient');
 
 // GET Ingredients
 const getAllIngredients = async function (req, res, next) {
-  const ingredients = await IngredientModel.find();
-  res.json({ ingredients });
+	const ingredients = await IngredientModel.find();
+	res.json({ ingredients });
 };
 
 /* GET PATIENT BY ID
