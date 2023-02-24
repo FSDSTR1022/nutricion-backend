@@ -33,10 +33,10 @@ const createExercise = async (req, res) => {
 };
 
 const updateExercise = async (req, res) => {
-   console.log("PARAMS: ",req.params);
-                                       //{}
-    console.log("BODY: ",req.body);
-                                      /* {
+	console.log('PARAMS: ', req.params);
+	//{}
+	console.log('BODY: ', req.body);
+	/* {
                                         name: 'Ejercicio Modificado',
                                         bodyPart: [ { _id: '63c5d88935c2960ff95f6854' } ]
                                       } */    
@@ -56,7 +56,14 @@ const updateExercise = async (req, res) => {
       res.json("ERORR: "+error);
     }
 
-  
+		const exercise = await ExerciseModel.findById(req.query.id);
+
+		res.json(exercise);
+	} catch (error) {
+		console.log('EEERROOOOOOOOOOOOO');
+		console.log(error);
+		res.json('ERORR');
+	}
 };
 
 const deleteExercise = async (req,res) =>{
@@ -100,10 +107,13 @@ const getExerciseAtributes = async (req,res) =>{
     res.json("ERORR: "+error);
   }
 
-
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////
+		res.json(ExerciseAtributes);
+	} catch (error) {
+		console.log('EEERROOOOOOOOOOOOO');
+		console.log(error);
+		res.json('ERORR');
+	}
+};
 
 const createExerciseType = async (req, res) => {
   const exerciseType = new exerciseType(req.body);
@@ -123,15 +133,12 @@ const getAllexercisesTypes = async (req, res) => {
   }
 };
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-
 const createExerciseEquipment = async (req, res) => {
   const exerciseEquipment = new exerciseEquipment(req.body);
   await exerciseEquipment.save();
   res.json(exerciseEquipment);
 };
 
-///////////////////////////////////////////////////////////////////////////////////////////////
 const getAllExerciseEquipment = async (req, res) => {
   try {
     const result = await exerciseEquipment.find(req.query);
@@ -142,26 +149,22 @@ const getAllExerciseEquipment = async (req, res) => {
   }
 };
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-
 const createBodyPart = async (req, res) => {
-  const bodyPart = new BodyPart(req.body);
-  await bodyPart.save();
-  res.json(bodyPart);
+	const bodyPart = new BodyPart(req.body);
+	await bodyPart.save();
+	res.json(bodyPart);
 };
 
 const getAllBodyPart = async (req, res) => {
-  try {
-    console.log("----------",req.query)
-    const result = await BodyPart.find(req.query);
+	try {
+		console.log('----------', req.query);
+		const result = await BodyPart.find(req.query);
 
     res.json(result);
   } catch (error) {
     res.json("ERORR: "+error);
   }
 };
-
-///////////////////////////////////////////////////////////////////////////////////////////////
 
 const createExerciseDifficulty = async (req, res) => {
   const exerciseDifficult = new exerciseDifficult(req.body);
@@ -179,8 +182,6 @@ const getAllExerciseDifficulty = async (req, res) => {
   }
 };
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-
 const createExerciseMuscle = async (req, res) => {
   const exerciseMucle = new exerciseMucle(req.body);
   await exerciseMucle.save();
@@ -196,7 +197,6 @@ const getAllExerciseMuscle = async (req, res) => {
     res.json("ERORR: "+error);
   }
 };
-
 
 module.exports = {
    getAllExercises,

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const PatientSchema = new Schema({
     name: String,
@@ -13,4 +13,4 @@ const PatientSchema = new Schema({
     imgUrl: String
 }, { timestamps: true })
 
-module.exports = mongoose.model('patient', PatientSchema)
+module.exports = mongoose.model('patient', PatientSchema);
