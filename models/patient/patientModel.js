@@ -2,18 +2,13 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const PatientSchema = new Schema({
-    dni: String,
     name: String,
-    discipline: [{
-        type: Schema.Types.ObjectId,
-        ref: 'discipline'
-    }],
-    admissionDate: Date,
-    dropoutDate: Date,
+    lastName: String,
+    dni: String,
     email: String,
     phone: String,
-    user: String,
-    password: String,
+    admissionDate: Date,
+    dropoutDate: Date,
     active: Boolean,
     imgUrl: String
 }, { timestamps: true })

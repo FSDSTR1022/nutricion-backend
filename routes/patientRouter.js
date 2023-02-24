@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const userController = require('../controllers/patient')
+const userController = require('../controllers/patientController')
 
 // GET PATIENTS
 router.get('/', userController.getAllPatients)
@@ -13,7 +13,7 @@ router.get('/:id', userController.getPatientById)
 router.post('/', userController.createPatient)
 
 // PUT PATIENT
-router.put('/:id', userController.putPatient)
+router.put('/:id', userController.updatePatient)
 
 // DELETE PATIENT
 router.delete('/:id', userController.deletePatient)

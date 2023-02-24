@@ -6,13 +6,13 @@ const exerciseController = require ("../controllers/exerciseController");
 router.get("/",exerciseController.getAllExercises);
 
 router.get("/Ejercicio",exerciseController.getExerciseAtributes);//pasandole el id del ejercicio como parametro
-router.delete("/Ejercicio",exerciseController.deleteExcercise)
+router.delete("/Ejercicio",exerciseController.deleteExercise)
 router.post("/Ejercicio",exerciseController.createExercise)
 router.put("/Ejercicio",exerciseController.updateExercise);
 
 
 router.post("/TipoEjercicios",exerciseController.createExerciseType)
-router.get("/TipoEjercicios",exerciseController.getAllExercisesTypes)
+router.get("/TipoEjercicios",exerciseController.getAllexercisesTypes)
 
 router.post("/EquipamientoEjercicio",exerciseController.createExerciseEquipment)
 router.get("/EquipamientoEjercicio",exerciseController.getAllExerciseEquipment)

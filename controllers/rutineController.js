@@ -1,10 +1,10 @@
-const RutineModel = require("../models/rutineModel");
+const RutineModel = require("../models/rutine/rutineModel");
 
 const getAllRutines = async (req, res) => {
   try {
     const result = await RutineModel.find()
       .populate("patient")
-      .populate("rounds.excercises.exercise")
+      .populate("rounds.exercises.exercise")
           
     res.status(200).json(result);
 

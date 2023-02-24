@@ -13,7 +13,7 @@ const RutineSchema = new Schema(
       {
         order: Number,
         roundName: String,
-        excercises: [
+        exercises: [
           {
             exercise: {
               type: Schema.Types.ObjectId,

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const exerciseRoutes = require("./exerciseRouter");
 
-const patientRoutes = require("./patients");
+const patientRoutes = require("./patientRouter");
 const professionalRoutes = require("./professionals");
 const disciplineRoutes = require("./disciplines");
 const ingredientRoutes = require("./ingredients");

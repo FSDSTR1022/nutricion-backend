@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const DisciplineModel = require('../models/discipline')
 
 // GET DISCIPLINES

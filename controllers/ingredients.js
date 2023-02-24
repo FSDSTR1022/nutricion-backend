@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 const IngredientModel = require("../models/ingredient");
 
 // GET Ingredients
-const getAllIngredients = async function (req, res, next) {
+const getAllIngredients = async function (req, res) {
   const ingredients = await IngredientModel.find();
   res.json({ ingredients });
 };
