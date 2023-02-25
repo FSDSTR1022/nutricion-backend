@@ -1,23 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const exerciseRoutes = require('./exerciseRouter');
 const cors = require('cors');
 
-const patientRoutes = require("./patientRouter");
-const professionalRoutes = require("./professionals");
-const disciplineRoutes = require("./disciplines");
-const ingredientRoutes = require("./ingredients");
+const usersRoutes = require("./usersRouter")
 const rutineRoutes = require("./rutineRouter");
-
+const exerciseRoutes = require('./exerciseRouter');
 
 router
-  .use("/patients", patientRoutes)
-  .use("/professionals", professionalRoutes)
-  .use("/disciplines", disciplineRoutes)
-  .use("/Ejercicios", exerciseRoutes)
-  .use("/ingredients", ingredientRoutes)
-  .use("/Rutinas",rutineRoutes)
+  .use("/users", usersRoutes)
+  .use("/excersices", exerciseRoutes)
+  .use("/rutines",rutineRoutes)
   .use(cors());
 
 module.exports = router;
