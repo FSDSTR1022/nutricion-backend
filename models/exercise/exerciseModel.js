@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const ExerciseSchema = new Schema(
+const exerciseSchema = new Schema(
 	{
 		name: String,
 		exerciseType: {
 			type: Schema.Types.ObjectId,
 			ref: 'exercisetypes',
 		},
-		bodyPart: {
-			type: Schema.Types.ObjectId,
-			ref: 'exercisebodypart',
-		},
+		bodyParts: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'exercisebodypart',
+			},
+		],
 		muscles: [
 			{
 				type: Schema.Types.ObjectId,
@@ -22,10 +24,12 @@ const ExerciseSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'exercisedifficulty',
 		},
-		equipment: {
-			type: Schema.Types.ObjectId,
-			ref: 'exerciseequipment',
-		},
+		equipments: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'exerciseequipment',
+			},
+		],
 		explanation: String,
 		precautions: String,
 		photo: String,
@@ -34,4 +38,4 @@ const ExerciseSchema = new Schema(
 	{ timestamps: true }
 );
 
-module.exports = mongoose.model('exercise', ExerciseSchema);
+module.exports = mongoose.model('exercise', exerciseSchema);

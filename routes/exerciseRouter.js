@@ -8,8 +8,10 @@ router.put('/', exerciseController.updateExercise);
 
 router.get('/NuevoEjercicio', exerciseController.getExerciseAtributes);
 
-router.post('/TipoEjercicios', exerciseController.createExerciseType);
-router.get('/TipoEjercicios', exerciseController.getAllExercisesTypes);
+router.get('/Ejercicio', exerciseController.getExerciseAtributes); //pasandole el id del ejercicio como parametro
+router.delete('/Ejercicio', exerciseController.deleteExercise);
+router.post('/Ejercicio', exerciseController.createExercise);
+router.put('/Ejercicio', exerciseController.updateExercise);
 
 router.post(
 	'/EquipamientoEjercicio',
@@ -20,8 +22,8 @@ router.get(
 	exerciseController.getAllExerciseEquipment
 );
 
-router.post('/ParteCuerpo', exerciseController.createBodyPart);
-router.get('/ParteCuerpo', exerciseController.getAllBodyPart);
+router.post('/TipoEjercicios', exerciseController.createExerciseType);
+router.get('/TipoEjercicios', exerciseController.getAllexercisesTypes);
 
 router.post(
 	'/DificultadEjercicio',
