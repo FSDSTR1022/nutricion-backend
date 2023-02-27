@@ -1,9 +1,9 @@
 const exerciseModel = require('../models/exercise/exerciseModel');
-const exerciseType = require('../models/exercise/exerciseTypeModel');
-const exerciseEquipment = require('../models/exercise/exerciseEquipmentModel');
-const BodyPart = require('../models/exercise/exerciseBodyPartModel');
-const exerciseDifficult = require('../models/exercise/exerciseDifficultyModel');
-const exerciseMucle = require('../models/exercise/exerciseMusclesModel');
+const exerciseTypeModel = require('../models/exercise/exerciseTypeModel');
+const exerciseEquipmentModel = require('../models/exercise/exerciseEquipmentModel');
+const BodyPartModel = require('../models/exercise/exerciseBodyPartModel');
+const exerciseDifficultModel = require('../models/exercise/exerciseDifficultyModel');
+const exerciseMucleModel = require('../models/exercise/exerciseMusclesModel');
 
 const getAllExercises = async (req, res) => {
 	try {
@@ -61,11 +61,11 @@ const getExerciseAtributes = async (req, res) => {
 	try {
 		let exerciseAtributes = {};
 
-		exerciseAtributes.exerciseType = await exerciseType.find();
-		exerciseAtributes.bodyParts = await BodyPart.find();
-		exerciseAtributes.exerciseMucles = await exerciseMucle.find();
-		exerciseAtributes.exerciseDifficult = await exerciseDifficult.find();
-		exerciseAtributes.exerciseEquipments = await exerciseEquipment.find();
+		exerciseAtributes.exerciseType = await exerciseTypeModel.find();
+		exerciseAtributes.bodyParts = await BodyPartModel.find();
+		exerciseAtributes.exerciseMucles = await exerciseMucleModel.find();
+		exerciseAtributes.exerciseDifficult = await exerciseDifficultModel.find();
+		exerciseAtributes.exerciseEquipments = await exerciseEquipmentModel.find();
 
 		res.json(exerciseAtributes);
 	} catch (error) {
@@ -74,14 +74,14 @@ const getExerciseAtributes = async (req, res) => {
 };
 
 const createExerciseType = async (req, res) => {
-	const exerciseType = new exerciseType(req.body);
+	const exerciseType = new exerciseTypeModel(req.body);
 	await exerciseType.save();
 	res.json(exerciseType);
 };
 
 const getAllexercisesTypes = async (req, res) => {
 	try {
-		const result = await exerciseType.find(req.query);
+		const result = await exerciseTypeModel.find(req.query);
 
 		res.json(result);
 	} catch (error) {
@@ -90,14 +90,14 @@ const getAllexercisesTypes = async (req, res) => {
 };
 
 const createExerciseEquipment = async (req, res) => {
-	const exerciseEquipment = new exerciseEquipment(req.body);
+	const exerciseEquipment = new exerciseEquipmentModel(req.body);
 	await exerciseEquipment.save();
 	res.json(exerciseEquipment);
 };
 
 const getAllExerciseEquipment = async (req, res) => {
 	try {
-		const result = await exerciseEquipment.find(req.query);
+		const result = await exerciseEquipmentModel.find(req.query);
 
 		res.json(result);
 	} catch (error) {
@@ -106,14 +106,14 @@ const getAllExerciseEquipment = async (req, res) => {
 };
 
 const createBodyPart = async (req, res) => {
-	const bodyPart = new BodyPart(req.body);
+	const bodyPart = new BodyPartModel(req.body);
 	await bodyPart.save();
 	res.json(bodyPart);
 };
 
 const getAllBodyPart = async (req, res) => {
 	try {
-		const result = await BodyPart.find(req.query);
+		const result = await BodyPartModel.find(req.query);
 
 		res.json(result);
 	} catch (error) {
@@ -122,14 +122,14 @@ const getAllBodyPart = async (req, res) => {
 };
 
 const createExerciseDifficulty = async (req, res) => {
-	const exerciseDifficult = new exerciseDifficult(req.body);
+	const exerciseDifficult = new exerciseDifficultModel(req.body);
 	await exerciseDifficult.save();
 	res.json(exerciseDifficult);
 };
 
 const getAllExerciseDifficulty = async (req, res) => {
 	try {
-		const result = await exerciseDifficult.find(req.query);
+		const result = await exerciseDifficultModel.find(req.query);
 
 		res.json(result);
 	} catch (error) {
@@ -138,14 +138,14 @@ const getAllExerciseDifficulty = async (req, res) => {
 };
 
 const createExerciseMuscle = async (req, res) => {
-	const exerciseMucle = new exerciseMucle(req.body);
+	const exerciseMucle = new exerciseMucleModel(req.body);
 	await exerciseMucle.save();
 	res.json(exerciseMucle);
 };
 
 const getAllExerciseMuscle = async (req, res) => {
 	try {
-		const result = await exerciseMucle.find(req.query);
+		const result = await exerciseMucleModel.find(req.query);
 
 		res.json(result);
 	} catch (error) {

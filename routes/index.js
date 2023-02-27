@@ -9,7 +9,7 @@ const exerciseRoutes = require('./exerciseRouter');
 
 router
 	.use('/users', usersRoutes)
-	.use('/excersices', exerciseRoutes)
+	.use('/exercises', exerciseRoutes)
 	.use('/rutines', rutineRoutes)
 	.use(cors());
 
