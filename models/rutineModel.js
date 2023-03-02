@@ -4,9 +4,9 @@ const { Schema } = mongoose;
 const RutineSchema = new Schema(
 	{
 		name: String,
-		patient: {
+		user: {
 			type: Schema.Types.ObjectId,
-			ref: 'patient',
+			ref: 'user',
 		},
 		day: Date,
 		rounds: [

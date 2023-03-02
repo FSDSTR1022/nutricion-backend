@@ -32,6 +32,10 @@ const createExercise = async (req, res) => {
 };
 
 const updateExercise = async (req, res) => {
+	
+	console.log("en updateExercise")
+	console.log("en req.query.id")
+	console.log("en req.body")
 	try {
 		await exerciseModel.findByIdAndUpdate(req.query.id, req.body);
 
@@ -46,9 +50,10 @@ const updateExercise = async (req, res) => {
 const deleteExercise = async (req, res) => {
 	try {
 		let respuesta = await exerciseModel.findByIdAndDelete(req.query._id);
+		console.log("respuesta: ",respuesta)
 
 		if (!respuesta) {
-			res.status(404).json('No hay Ejercicio con ese ID');
+			res.status(400).json('No hay Ejercicio con ese ID');
 		} else {
 			res.status(200).json(respuesta);
 		}
