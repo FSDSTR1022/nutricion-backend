@@ -133,7 +133,7 @@ const loginUser = async function (req, res) {
 			});
 
 		if (!response)
-			return res.status(200).json({
+			return res.status(400).json({
 				succes: false,
 				message: 'Se ha producido un error al validar contraseña',
 				token: null,
@@ -152,7 +152,13 @@ const loginUser = async function (req, res) {
 		return res.status(200).json({
 			succes: true,
 			message: 'Iniciando sesión con éxito',
-			token: token,
+			user: {
+				name: searchUsers.name,
+				email: searchUsers.email,
+				type: searchUsers.userType,
+				img: searchUsers.imgUrl,
+				token: token,
+			},
 		});
 	});
 };
