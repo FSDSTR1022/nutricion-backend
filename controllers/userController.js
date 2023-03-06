@@ -1,6 +1,8 @@
 const UserModel = require('../models/userModel');
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const sendEmail = require('./sendEmail');
 const saltRounds = 10;
 
 const getAllUsers = async function (req, res) {
@@ -67,6 +69,7 @@ const createUser = async function (req, res) {
 						});
 					} else {
 						res.status(200).json(savedInfo);
+						sendEmail(savedInfo);
 					}
 				});
 			}
