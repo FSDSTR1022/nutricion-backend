@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const mongoose = require('mongoose');
-const mongoUrl =
-	'mongodb+srv://nutricion:4bDwjEOHoGDexz4X@nutricion.cclxebv.mongodb.net/nutricionRojo?retryWrites=true&w=majority';
+require('dotenv').config();
 const routes = require('./routes/index');
 
 var createError = require('http-errors');
@@ -11,6 +10,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const mongoUrl = process.env.MONGO_URL;
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
