@@ -12,6 +12,19 @@ var logger = require('morgan');
 const cors = require('cors');
 const mongoUrl = process.env.MONGO_URL;
 
+const config = {
+	application: {
+		cors: {
+			server: [
+				{
+					origin: process.env.PORT || `0.0.0.0:$PORT`,
+					credentials: true,
+				},
+			],
+		},
+	},
+};
+
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
@@ -37,7 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors(config.application.cors.server));
 
 app.options('*', cors());
 app.use(function (req, res, next) {
@@ -67,5 +80,7 @@ app.use(function (err, req, res, next) {
 	res.status(err.status || 500);
 	res.render('error');
 });
+
+// app.listen(process.env.PORT || `0.0.0.0:$PORT`);
 
 module.exports = app;
