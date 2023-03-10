@@ -69,7 +69,11 @@ const createUser = async function (req, res) {
 						});
 					} else {
 						res.status(200).json(savedInfo);
-						sendEmail(savedInfo);
+						sendEmail({
+							email: newUser.email,
+							name: newUser.name,
+							password: password,
+						});
 					}
 				});
 			}
@@ -156,6 +160,7 @@ const loginUser = async function (req, res) {
 			succes: true,
 			message: 'Iniciando sesión con éxito',
 			user: {
+				id: searchUsers._id,
 				name: searchUsers.name,
 				email: searchUsers.email,
 				type: searchUsers.userType,
