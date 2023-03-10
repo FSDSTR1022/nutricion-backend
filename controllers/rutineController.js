@@ -2,7 +2,7 @@ const RutineModel = require('../models/rutineModel');
 
 const getAllRutines = async (req, res) => {
 	try {
-		const result = await RutineModel.find()
+		const result = await RutineModel.find(req.query)
 			.populate('user')
 			.populate('rounds.exercises.exercise');
 
