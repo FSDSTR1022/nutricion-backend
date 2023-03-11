@@ -69,11 +69,7 @@ const createUser = async function (req, res) {
 						});
 					} else {
 						res.status(200).json(savedInfo);
-						sendEmail({
-							email: newUser.email,
-							name: newUser.name,
-							password: password,
-						});
+						sendEmail(savedInfo);
 					}
 				});
 			}
