@@ -2,9 +2,35 @@ const RutineModel = require('../models/rutineModel');
 
 const getAllRutines = async (req, res) => {
 	try {
+			const exercisePoputalate =
+			{
+				path: 'rounds.exercises.exercise',
+				model: 'exercise',
+				populate: [
+					{
+					path: 'bodyParts', 
+					model: 'exercisebodypart'
+				},
+				{
+					path: 'muscles', 
+					model: 'exercisemuscles'
+				},
+				{
+					path: 'difficulty', 
+					model: 'exercisedifficulty'
+				},
+				{
+					path: 'equipments', 
+					model: 'exerciseequipment'
+				}
+				]
+			}	
+
+
 		const result = await RutineModel.find(req.query)
 			.populate('user')
-			.populate('rounds.exercises.exercise');
+			.populate(exercisePoputalate)
+			
 
 		res.status(200).json(result);
 	} catch (error) {
