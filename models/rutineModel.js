@@ -12,7 +12,10 @@ const RutineSchema = new Schema(
 		status:String,
 		satisfaction:Number,
 		feedback:String,
-		professional: String,
+		professional: {
+			type: Schema.Types.ObjectId,
+			ref: 'user',
+		},
 		rounds: [
 			{
 				order: Number,
