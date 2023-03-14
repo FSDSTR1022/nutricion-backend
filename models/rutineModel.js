@@ -10,6 +10,8 @@ const RutineSchema = new Schema(
 		},
 		day: Date,
 		status:String,
+		satisfaction:Number,
+		feedback:String,
 		rounds: [
 			{
 				order: Number,
