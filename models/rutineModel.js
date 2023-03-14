@@ -9,7 +9,11 @@ const RutineSchema = new Schema(
 			ref: 'user',
 		},
 		day: Date,
+<<<<<<< HEAD
 		professional: Schema.Types.ObjectId,
+=======
+		status:String,
+>>>>>>> 77dd0e86c29deffb3bdf5305590ba53375c7b108
 		rounds: [
 			{
 				order: Number,
