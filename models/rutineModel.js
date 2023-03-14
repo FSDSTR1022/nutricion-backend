@@ -12,6 +12,7 @@ const RutineSchema = new Schema(
 		status:String,
 		satisfaction:Number,
 		feedback:String,
+		professional: String,
 		rounds: [
 			{
 				order: Number,
