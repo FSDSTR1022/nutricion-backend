@@ -9,6 +9,7 @@ const RutineSchema = new Schema(
 			ref: 'user',
 		},
 		day: Date,
+		professional: Schema.Types.ObjectId,
 		rounds: [
 			{
 				order: Number,
