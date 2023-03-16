@@ -12,6 +12,10 @@ const getAllRutines = async (req, res) => {
 					model: 'exercisebodypart'
 				},
 				{
+					path: 'exerciseType', 
+					model: 'exercisetypes'
+				},
+				{
 					path: 'muscles', 
 					model: 'exercisemuscles'
 				},
