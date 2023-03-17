@@ -71,6 +71,7 @@ const createUser = async function (req, res) {
 						const args = {
 							name: savedInfo.name,
 							email: savedInfo.email,
+							userType: savedInfo.userType,
 							password: password,
 						};
 						res.status(200).json(args);
