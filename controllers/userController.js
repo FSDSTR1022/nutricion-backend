@@ -68,8 +68,13 @@ const createUser = async function (req, res) {
 							message: 'No se pudo guardar el Usuario',
 						});
 					} else {
-						res.status(200).json(savedInfo);
-						sendEmail(savedInfo);
+						const args = {
+							name: savedInfo.name,
+							email: savedInfo.email,
+							password: password,
+						};
+						res.status(200).json(args);
+						sendEmail(args);
 					}
 				});
 			}
